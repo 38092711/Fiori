@@ -1,0 +1,29 @@
+{
+
+    "gs_btn1" : {
+       "text" : "Confirm",
+       "width" : "150px",
+       "icon" : "sap-icon://flight"
+    },
+
+    "gs_btn2" : {
+        "text" : "Check",
+        "width" : "200px",
+        "enabled" : false
+    },
+
+    "gs_input1" : {
+        "value" : "입력 필드",
+        "des" : "Input field",
+        "max" : 20,
+        "width" : "300px",
+        "show" : true
+    },
+
+    "gs_input2" : {
+        "des" : "컨트롤러에서 세팅",
+        "width" : "300px",
+        "max" : 10
+    }
+
+}

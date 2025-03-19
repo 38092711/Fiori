@@ -1,0 +1,35 @@
+<mvc:View controllerName="smc6.cl1.ui5component.controller.StudyView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+    <VBox id="vbox">
+
+    <Panel id="p1" >
+    <HBox id="h1">
+        <Button id="btn1" text="{/gs_btn1/text}" width="{/gs_btn1/width}" icon="{/gs_btn1/icon}" />
+    </HBox>
+    </Panel>
+
+    <Panel id="p2" >
+    <HBox id="h2">
+        <Button id="btn2" text="{/gs_btn2/text}" width="{/gs_btn2/width}" enabled="{/gs_btn2/enabled}" />
+    </HBox>
+    </Panel>
+
+    <Panel id="p3" >
+    <HBox id="h3">
+        <Input id="in1" value="{/gs_input1/value}" description="{/gs_input1/des}" maxLength="{/gs_input1/max}" 
+        width="{/gs_input1/width}"
+        showClearIcon="{/gs_input1/show}" />
+    </HBox>
+    </Panel>
+    
+    <Panel id="p4" >
+    <HBox id="h4">
+        <Input id="in2" description="{/gs_input2/des}" maxLength="{/gs_input2/max}" width="{/gs_input2/width}" />
+    </HBox>
+    </Panel>
+    
+    </VBox>
+    </Page>
+</mvc:View>

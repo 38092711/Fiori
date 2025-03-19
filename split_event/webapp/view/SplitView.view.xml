@@ -1,0 +1,143 @@
+<mvc:View controllerName="sync6.cl1.a22.splitevent.controller.SplitView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table">
+    <Page id="page" title="{i18n>title}">
+    <SplitContainer
+                    id="AirlineSplit"
+                    initialDetail="detail"
+                    initialMaster="master">
+    <masterPages>
+			<Page
+				id="master"
+				title="Master 1"
+				backgroundDesign= "List">
+				<List items="{/AirlineSet}">
+                    <StandardListItem icon="sap-icon://flight" title="{Carrname}" description="{Carrid}" press="onSpfli" type="Navigation" />
+				</List>
+			</Page>
+    </masterPages>
+    <detailPages>
+        	<Page
+				id="detailDetail"
+				title="Detail Detail"
+				backgroundDesign= "Solid">
+                <t:Table
+                        id = "spfli"
+                        title="Flight Schedule"
+                        rows="{/scheduleSet}"
+                        selectionMode="MultiToggle"
+                        paste="onPaste"
+                        ariaLabelledBy="title"
+                        visibleRowCount="5"
+                        cellClick="onSflight">
+				<t:columns>
+					<t:Column width="11rem">
+						<Label text="{/#scheduleSet/Carrid/@sap:label}" />
+						<t:template>
+							<Text text="{Carrid}" wrapping="false" />
+						</t:template>
+                    </t:Column>
+
+                    <t:Column width="11rem">
+						<Label text="{/#scheduleSet/Connid/@sap:label}" />
+						<t:template>
+							<Text text="{Connid}" wrapping="false" />
+						</t:template>
+                    </t:Column>
+
+                    <t:Column width="11rem">
+						<Label text="{/#scheduleSet/Countryfr/@sap:label}" />
+						<t:template>
+							<Text text="{Countryfr}" wrapping="false" />
+						</t:template>
+                    </t:Column>
+
+                    <t:Column width="11rem">
+						<Label text="{/#scheduleSet/Cityfrom/@sap:label}" />
+						<t:template>
+							<Text text="{Cityfrom}" wrapping="false" />
+						</t:template>
+                    </t:Column>
+
+                    <t:Column width="11rem">
+						<Label text="{/#scheduleSet/Countryto/@sap:label}" />
+						<t:template>
+							<Text text="{Countryto}" wrapping="false" />
+						</t:template>
+                    </t:Column>
+
+                    <t:Column width="11rem">
+						<Label text="{/#scheduleSet/Cityto/@sap:label}" />
+						<t:template>
+							<Text text="{Cityto}" wrapping="false" />
+						</t:template>
+                    </t:Column>
+
+                </t:columns>
+                </t:Table>
+
+                <OverflowToolbar  ></OverflowToolbar>
+
+                 <t:Table
+                        id = "sflight"
+                        rows="{/flightSet}"
+                        title="Flight Info"
+                        selectionMode="MultiToggle"
+                        paste="onPaste"
+                        ariaLabelledBy="title"
+                        visibleRowCount="5">
+				<t:columns>
+                    <t:Column width="11rem">
+						<Label text="{/#flightSet/Carrid/@sap:label}" />
+						<t:template>
+							<Text text="{Carrid}" wrapping="false" />
+						</t:template>
+                    </t:Column>
+
+                    <t:Column width="11rem">
+						<Label text="{/#flightSet/Connid/@sap:label}" />
+						<t:template>
+							<Text text="{Connid}" wrapping="false" />
+						</t:template>
+                    </t:Column>
+
+                    <t:Column width="11rem">
+						<Label text="{/#flightSet/Fldate/@sap:label}" />
+						<t:template>
+							<Text text="{Fldate}" wrapping="false" />
+						</t:template>
+                    </t:Column>
+
+                    <t:Column width="11rem">
+						<Label text="{/#flightSet/Price/@sap:label}" />
+						<t:template>
+							<Text text="{
+                                        parts:[{path:'Price'},{path:'Currency'}],
+                                        type: 'sap.ui.model.type.Currency',
+                                        formatOptions: {showMeasure: true }
+                                        }" wrapping="false" />
+						</t:template>
+                    </t:Column>
+
+                    <t:Column width="11rem">
+						<Label text="{/#flightSet/Currency/@sap:label}" />
+						<t:template>
+							<Text text="{Currency}" wrapping="false" />
+						</t:template>
+                    </t:Column>
+
+                    <t:Column width="11rem">
+						<Label text="{/#flightSet/Planetype/@sap:label}" />
+						<t:template>
+							<Text text="{Planetype}" wrapping="false" />
+						</t:template>
+                    </t:Column>
+
+                </t:columns>
+                </t:Table>
+            </Page>
+    </detailPages>
+    </SplitContainer>
+    </Page>
+</mvc:View>

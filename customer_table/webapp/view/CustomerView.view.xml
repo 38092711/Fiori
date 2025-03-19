@@ -1,0 +1,128 @@
+<mvc:View controllerName="sync6.cl1.customertable.controller.CustomerView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:layout="sap.ui.layout"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data" 
+    xmlns:m="sap.suite.ui.microchart">
+    <Page id="page" title="{i18n>title}">
+        <Panel >
+            <VBox >
+            	<t:Table
+                id = "custTable"
+				rows="{/custSet}"
+				selectionMode="MultiToggle"
+				paste="onPaste"
+				ariaLabelledBy="title">
+				<t:columns>
+					<t:Column width="11rem">
+						<Label text="{/#custSet/Id/@sap:label}" />
+						<t:template>
+							<Text text="{Id}" wrapping="false" />
+						</t:template>
+					</t:Column>
+
+                    <t:Column width="11rem">
+						<Label text="{/#custSet/Name/@sap:label}" />
+						<t:template>
+							<Text text="{Name}" wrapping="false" />
+						</t:template>
+					</t:Column>
+
+                    <t:Column width="11rem">
+						<Label text="{/#custSet/City/@sap:label}" />
+						<t:template>
+							<Text text="{City}" wrapping="false" />
+						</t:template>
+					</t:Column>
+
+                    <t:Column width="11rem">
+						<Label text="{/#custSet/Country/@sap:label}" />
+						<t:template>
+							<Text text="{Country}" wrapping="false" />
+						</t:template>
+					</t:Column>
+
+                      <t:Column width="11rem">
+						<Label text="{/#custSet/Email/@sap:label}" />
+						<t:template>
+							<Text text="{Email}" wrapping="false" />
+						</t:template>
+					</t:Column>
+
+                    </t:columns>
+                    </t:Table>
+
+                    <OverflowToolbar >
+                    <ToolbarSpacer width="45rem" />
+                    <Label text="Contents" />
+                    <Button text="Clear"   icon="sap-icon://clear-all" press="onClear"   />
+                    <Button text="Display" icon="sap-icon://display"   press="onDisplay" />
+                    <Button text="Create"  icon="sap-icon://create"    press="onCreate"  />
+                    <Button text="Edit"    icon="sap-icon://edit"      press="onUpdate"  />
+                    <Button text="Delete"  icon="sap-icon://delete"    press="onDelete"  />
+                </OverflowToolbar>
+
+                <f:SimpleForm   id="contentForm"
+                                editable="false"
+                                layout="ResponsiveGridLayout"
+                                labelSpanXL="3"
+                                labelSpanL="3"
+                                labelSpanM="3"
+                                labelSpanS="12"
+                                adjustLabelSpan="false"
+                                emptySpanXL="4"
+                                emptySpanL="4"
+                                emptySpanM="4"
+                                emptySpanS="0"
+                                columnsXL="1"
+                                columnsL="1"
+                                columnsM="1"
+                                singleContainerFullSize="false" >
+                    <f:content>
+                        <Label text="Customer id" />
+                        <Input id="Id" placeholder="Customer id" width="7rem"/>
+                        <Label text="Custom Name" />
+                        <Input id="Name" placeholder="Custom Name" width="5rem"/>
+                        <Label text="City" />
+                        <Input id="City" placeholder="City" width="4rem"/>
+                        <Label text="Country" />
+                        <Input id="Country" placeholder="Country" width="7rem"/>
+                        <Label text="Email" />
+                        <Input id="Email" placeholder="Email" width="10rem"/>
+                    </f:content>
+                </f:SimpleForm>
+            </VBox>
+        </Panel>
+         <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}"
+                    height='100%' width="100%" vizType='bar'>
+                    <viz:dataset>
+                    <viz.data:FlattenedDataset data="{/custcdsSet}">
+                    <viz.data:dimensions>
+                    <viz.data:DimensionDefinition name="Country"
+                    value="{Country}" />
+                    </viz.data:dimensions>
+                    <viz.data:measures>
+                    <viz.data:MeasureDefinition name="Customer Count"
+                    value="{Customercount}" />
+                    </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                    </viz:dataset>
+
+                    <viz:feeds>
+                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension"
+                    values="Country" />
+                   <viz.feeds:FeedItem uid="valueAxis" type="Measure"
+                    values="Customer Count" />
+                    </viz:feeds>
+                    <viz:dependents>
+                    <viz:Popover id="idPopOver"></viz:Popover>
+                    </viz:dependents>
+                    </viz:VizFrame>
+    </Page>
+</mvc:View> 
